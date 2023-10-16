@@ -5,7 +5,7 @@ import torch.nn.init
 from dataprocessing import *
 from tqdm import tqdm
 
-from toolbox.models.FFNet9.FFNet9_Segformer import FFNet
+from toolbox.models.GSGNet_S. import GSGNet_S
 
 if DATASET == 'Potsdam':
     all_files = sorted(glob(LABEL_FOLDER.replace('{}', '*')))
@@ -89,13 +89,14 @@ def test(net , test_ids, all=False, stride=WINDOW_SIZE[0], batch_size=BATCH_SIZE
 
 
 if __name__ == "__main__":
-    net = FFNet().cuda()
-    net.load_state_dict(torch.load('./weight/FFNet9_Segformer-Vaihingen-loss.pth'))
-    # net.load_state_dict(torch.load('./weight/FFNet9_Segformer-Potsdam-loss.pth'))
+    net = GSGNet_S().cuda()
+    # net = GSGNet_T().cuda()
+    net.load_state_dict(torch.load('./weight/GSGNet_S-Vaihingen-loss.pth'))
+    # net.load_state_dict(torch.load('./weight/GSGNet_S-Potsdam-loss.pth'))
 
     _, all_preds, all_gts = test(net, test_ids, all=True, stride=48)
     # print(accuary)
     for p, id_ in zip(all_preds, test_ids):
         img = convert_to_color_(p)
-        io.imsave('./results/Vaihingen/FFNet9_Segformer/top_mosaic_09cm_area{}.png'.format(id_), img)
-        # io.imsave('./results/Potsdam/FFNet9_Segformer/top_mosaic_09cm_area{}.png'.format(id_), img)
+        io.imsave('./results/Vaihingen/GSGNet_S/top_mosaic_09cm_area{}.png'.format(id_), img)
+        # io.imsave('./results/Potsdam/GSGNet_S/top_mosaic_09cm_area{}.png'.format(id_), img)
