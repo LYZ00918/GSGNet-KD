@@ -172,7 +172,7 @@ def evaluate2(pre_path, label_path):
 
 
 if __name__ == '__main__':
-    pre_path = '/home/user/桌面/pytorch_segementation_Remote_Sensing/results/{}/FFNet9_Segformer/'.format(DATASET)
+    pre_path = '/home/user/桌面/pytorch_segementation_Remote_Sensing/results/{}/GSGNet_S/'.format(DATASET)
     label_path = '/media/user/shuju/ISPRS/test/{}/'.format(DATASET)
 
     acc_list, macc_list, mIoU_list, fwIoU_list, classAcc, f1score_list, IoU_list = evaluate1(pre_path, label_path)
@@ -198,32 +198,5 @@ if __name__ == '__main__':
     # print("Imp.surf IoU:{:.2f}%\nBuildings IoU:{:.2f}%\nLow veg. IoU:{:.2f}%\nTree IoU:{:.2f}%\nCar IoU:{:.2f}%\nClutter IoU:{:.2f}%".format(np.mean(IoU_list[0])*100,np.mean(IoU_list[1])*100,np.mean(IoU_list[2])*100,np.mean(IoU_list[3])*100,np.mean(IoU_list[4])*100, np.mean(IoU_list[5])*100))
 
     # print("1: acc:{}\n2: acc:{}\n3: acc:{}\n4: acc:{}\n5: acc:{}\n".format(acc_list[0], acc_list[1], acc_list[2], acc_list[3], acc_list[4], acc_list[5]))
-
-# final1: acc=88.23%, F1-socre=82.65, macc=83.66%,mIoU=73.08%,fwIoU=79.73%
-# Imp.surf:91.44%
-# Buildings:91.14%
-# Low veg.:85.47%
-# Tree:85.10%
-# Car:92.40%
-# Clutter:56.43%
-
-"""
-final1: acc=88.47%, F1-socre=84.19, macc=84.71%,mIoU=75.38%,fwIoU=80.20%
-Imp.surf:91.64%
-Buildings:93.40%
-Low veg.:86.58%
-Tree:84.35%
-Car:93.59%
-Clutter:58.73%
-
-final1: acc=86.58%, F1-socre=81.38, macc=81.28%,mIoU=71.52%,fwIoU=77.21%
-Imp.surf:90.85%
-Buildings:92.67%
-Low veg.:85.40%
-Tree:78.02%
-Car:90.30%
-Clutter:50.46%
-"""
-
 
 
